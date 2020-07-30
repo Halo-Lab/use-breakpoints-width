@@ -33,18 +33,59 @@ export default function App() {
 }
 ```
 
-## Available breakpoints
+## Default values
+
+> To define custom breakpoints width and debounce delay, see available settings below: 
+
+**Breakpoints**
 * Desktop (`width >= 992`)
 * Tablet (`width > 768` && `width < 992`)
 * Mobile (`width < 768`)
 
+**Debounce**
+
+* Number in milliseconds (default 250ms).
+
+
 ## Settings
 
-`useBreakpoints` use debounce due to optimization purposes. You can change delay time to meet your requirements.
+### Breakpoints
 
-* `debounceTime` - number in milliseconds (default 150ms)
+You can configure custom breakpoints by providing an object as the first parameter.
 
-  ```js
-  ...
-  const { breakpoint, width } = useBreakpoints({ debounceTime: 500 });
-  ```
+```js
+const { breakpoint } = useBreakpoints({ 
+  mobile: 0, 
+  tablet: 768, 
+  desktop: 1200 
+});
+```
+
+It's possible to change just one breakpoint other one's will be defined by default values.
+
+```js
+const { breakpoint } = useBreakpoints({ 
+  desktop: 1200 
+});
+
+// result => { mobile: 0, tablet: 768, desktop: 1200 }
+}
+```
+### Debounce delay time
+
+`useBreakpoints` uses debounce due to optimization purposes. You can change the delay time to meet your requirements. Provide a new value as the second parameter. Number in milliseconds (default 250ms).
+
+```js
+...
+const { breakpoint, width } = useBreakpoints({ 
+  mobile: 0, 
+  tablet: 768, 
+  desktop: 1200 
+}, 500);
+```
+You can pass an empty object to keep default breakpoints values and set the new debounce time delay.
+```js
+...
+const { breakpoint, width } = useBreakpoints({}, 500);
+```
+

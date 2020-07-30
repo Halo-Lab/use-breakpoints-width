@@ -7,26 +7,50 @@ export const BREAKPOINTS = {
   MOBILE: 'mobile',
 };
 
-const getBreakpoint = function(width) {
-  if (width >= 992) {
+const defaultBreakponts = { 
+  mobile: 0, 
+  tablet: 768, 
+  desktop: 992 
+};
+
+const getBreakpoint = function(width, breakpoints) {
+  if (width >= breakpoints.desktop) {
     return BREAKPOINTS.DESKTOP;
   }
-  if (width >= 768) {
+  if (width >= breakpoints.tablet) {
     return BREAKPOINTS.TABLET;
   }
 
   return BREAKPOINTS.MOBILE;
 };
 
-const useBreakpoints = (settings = { debounceTime: 250 }) => {
+const checkBreakpoints = (breakpoints) => {
+  if(Object.keys(breakpoints).length === 0 || !breakpoints) {
+    return defaultBreakponts;
+  }
+
+  return {
+    ...defaultBreakponts,
+    ...breakpoints
+  };
+}
+
+const useBreakpoints = (
+  breakpointsSettings = defaultBreakponts, 
+  debounceTimeSettings = 250
+) => {
   const [width, setWidth] = useState(0);
+
+  const breakpoints = checkBreakpoints(breakpointsSettings);
+  console.log(breakpoints);
+  console.log(debounceTimeSettings);
 
   const handleResize = () => {
     const newWidth = document.documentElement.clientWidth;
     setWidth(newWidth);
   };
 
-  const handleResizeDebounce = debounce(handleResize, settings.debounceTime);
+  const handleResizeDebounce = debounce(handleResize, debounceTimeSettings);
 
   useEffect(() => {
     handleResize();
@@ -39,7 +63,7 @@ const useBreakpoints = (settings = { debounceTime: 250 }) => {
 
   return {
     width,
-    breakpoint: getBreakpoint(width),
+    breakpoint: getBreakpoint(width, breakpoints),
   };
 };
 
