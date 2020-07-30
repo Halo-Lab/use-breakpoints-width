@@ -8,7 +8,7 @@ Initialize `useBreakpoints` with a configuration object. The return value will b
 ```jsx
 import useBreakpoints from 'use-breakpoints-width';
 
-export default const App = () => {
+export default function App() {
   const { breakpoint, width } = useBreakpoints();
 
   return `The current breakpoint is ${breakpoint} and current screen width is ${width}px`
@@ -19,7 +19,7 @@ Consider using constants to verify the current breakpoint value. See the example
 ```jsx
 import useBreakpoints, { BREAKPOINTS } from 'use-breakpoints-width';
 
-const App = () => {
+export default function App() {
   const { breakpoint } = useBreakpoints();
 
   return (
