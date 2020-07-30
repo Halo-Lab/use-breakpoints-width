@@ -42,8 +42,6 @@ const useBreakpoints = (
   const [width, setWidth] = useState(0);
 
   const breakpoints = checkBreakpoints(breakpointsSettings);
-  console.log(breakpoints);
-  console.log(debounceTimeSettings);
 
   const handleResize = () => {
     const newWidth = document.documentElement.clientWidth;
