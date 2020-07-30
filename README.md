@@ -4,7 +4,7 @@ A React hook for getting the current breakpoint name and screen width.
 
 ## Usage 
 Initialize `useBreakpoints` with a configuration object. The return value will be an object with the breakpoint's name (string) and screen width (number).
-
+<br>
 ```jsx
 import useBreakpoints from 'use-breakpoints-width';
 
@@ -17,7 +17,7 @@ export default function App() {
 <br>
 <br>
 Consider using constants to verify the current breakpoint value. See the example below.
-
+<br>
 ```jsx
 import useBreakpoints, { BREAKPOINTS } from 'use-breakpoints-width';
 
