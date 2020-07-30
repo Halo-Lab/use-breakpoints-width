@@ -1,6 +1,6 @@
 {
   "name": "use-breakpoints-width",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React hook that shows the current breakpoint name and screen width.",
   "keywords": [
     "react",
