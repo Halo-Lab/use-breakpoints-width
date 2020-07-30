@@ -1,25 +1,46 @@
-import { useEffect, useState } from 'react';
-
-import getScreenSize from './utils/getScreenSize';
+import { useState, useEffect } from 'react';
 import debounce from './utils/debounce';
 
-const currentScreenSize = (settings = { debounceTime: 200 }) => {
-  const [screenSize, setScreenSize] = useState(getScreenSize());
-  const handleResize = () => setScreenSize(getScreenSize());
-  const handleResizeDebounced = debounce(handleResize, settings.debounceTime);
+export const BREAKPOINTS = {
+  DESKTOP: 'desktop',
+  TABLET: 'tablet',
+  MOBILE: 'mobile',
+};
+
+const getBreakpoint = function(width) {
+  if (width >= 992) {
+    return BREAKPOINTS.DESKTOP;
+  }
+  if (width >= 768) {
+    return BREAKPOINTS.TABLET;
+  }
+
+  return BREAKPOINTS.MOBILE;
+};
+
+const useBreakpoints = (settings = { debounceTime: 250 }) => {
+  const [width, setWidth] = useState(0);
+
+  const handleResize = () => {
+    const newWidth = document.documentElement.clientWidth;
+    setWidth(newWidth);
+  };
+
+  const handleResizeDebounce = debounce(handleResize, settings.debounceTime);
 
   useEffect(() => {
-    window.addEventListener('resize', handleResizeDebounced);
+    handleResize();
+    window.addEventListener('resize', handleResizeDebounce);
 
     return () => {
-      window.removeEventListener('resize', handleResizeDebounced);
-    };
+      window.removeEventListener('resize', handleResizeDebounce);
+    }
   }, []);
 
   return {
-    width: screenSize.width,
-    height: screenSize.height,
+    width,
+    breakpoint: getBreakpoint(width),
   };
 };
 
-export default currentScreenSize;
+export default useBreakpoints;

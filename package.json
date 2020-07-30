@@ -1,11 +1,12 @@
 {
-  "name": "my-new-module",
+  "name": "use-breakpoints-width",
   "version": "1.0.0",
-  "description": "NPM module template description",
+  "description": "React hook that shows the current breakpoint name and screen width.",
   "keywords": [
     "react",
     "hooks",
-    "screen size"
+    "breakpoints",
+    "screen width"
   ],
   "private": false,
   "main": "lib/index.js",
@@ -14,7 +15,7 @@
     "develop": "babel -w src --out-dir lib",
     "deploy": "npm publish"
   },
-  "author": "",
+  "author": "Halo Lab",
   "license": "ISC",
   "peerDependencies": {
     "react": "^16.6.1",
