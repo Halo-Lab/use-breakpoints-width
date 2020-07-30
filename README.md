@@ -1,8 +1,9 @@
 # useBreakpoints
 
-React hook that shows the current breakpoint name and screen width.
+A React hook for getting the current breakpoint name and screen width.
 
-## Example 
+## Usage 
+Initialize `useBreakpoints` with a configuration object. The return value will be an object with the breakpoint's name (string) and screen width (number).
 
 ```jsx
 import useBreakpoints from 'use-breakpoints-width';
@@ -37,6 +38,8 @@ const App = () => {
 * Mobile (`width < 768`)
 
 ## Settings
+
+`useBreakpoints` use debounce due to optimization purposes. You can change delay time to meet your requirements.
 
 * `debounceTime` - number in milliseconds (default 150ms)
 
