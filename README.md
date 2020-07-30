@@ -14,8 +14,8 @@ export default function App() {
   return `The current breakpoint is ${breakpoint} and current screen width is ${width}px`
 }
 ```
-
-
+<br>
+<br>
 Consider using constants to verify the current breakpoint value. See the example below.
 
 ```jsx
