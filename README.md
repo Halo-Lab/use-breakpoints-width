@@ -20,7 +20,7 @@ export default function App() {
 
   return (
     <div>
-      {`Breakpoint name is ${breakpoint}. Screen width is ${width}`}
+      {`Breakpoint name is ${breakpoint}. Screen width is ${width}px`}
     </div>
   );
 }
@@ -53,9 +53,32 @@ const { breakpoint } = useBreakpoints({
   }
 });
 ```
+More examples for breakpoint names.
+```js
+const { breakpoint } = useBreakpoints({ 
+  breakpoints: {
+    xxlarge: 1440,
+    xlarge: 1200,
+    large: 1024,
+    medium: 640,
+    small: 0,
+  }
+});
+```
+
+```js
+const { breakpoint } = useBreakpoints({ 
+  breakpoints: {
+    'big-screen': 1440,
+    'small screen': 768,
+    'mobile_screen': 640,
+  }
+});
+```
+
 ### Debounce delay time
 
-`useBreakpoints` uses debounce due to optimization purposes. You can change the delay time to meet your requirements. Provide a new value as the `debounceDelay` property value. Number in milliseconds (default 250ms).
+`useBreakpoints` uses debounce due to optimization purposes. You can change the delay time to meet your requirements. Provide a new value as the `debounceDelay` property value. Number in milliseconds (**default 250ms**)).
 
 ```js
 ...
@@ -68,7 +91,7 @@ const { breakpoint, width } = useBreakpoints({
   debounceDelay: 500
 });
 ```
-The default delay for debounce is 250 ms. It's possible to left it undefined so default value will apply.  
+It's possible to left it undefined so default value will apply (**default 250ms**).  
 ```js
 ...
 const { breakpoint, width } = useBreakpoints({ 
