@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react';
 import debounce from './utils/debounce';
 
+const defaultSettings = { 
+  breakpoints: {
+    desktop: 992,
+    tablet: 768,
+    mobile: 0
+  },
+  debounceDelay: 250
+ }
+
 const getBreakpoint = function(width, breakpoints) {
   const sortedBreakpoints = Object.entries(breakpoints).sort((a, b) => a[1] - b[1]);
 
