@@ -1,54 +1,31 @@
 import { useState, useEffect } from 'react';
 import debounce from './utils/debounce';
 
-export const BREAKPOINTS = {
-  DESKTOP: 'desktop',
-  TABLET: 'tablet',
-  MOBILE: 'mobile',
-};
-
-const defaultBreakponts = { 
-  mobile: 0, 
-  tablet: 768, 
-  desktop: 992 
-};
-
 const getBreakpoint = function(width, breakpoints) {
-  if (width >= breakpoints.desktop) {
-    return BREAKPOINTS.DESKTOP;
-  }
-  if (width >= breakpoints.tablet) {
-    return BREAKPOINTS.TABLET;
-  }
+  const sortedBreakpoints = Object.entries(breakpoints).sort((a, b) => a[1] - b[1]);
 
-  return BREAKPOINTS.MOBILE;
+  let currentBreakpoint = sortedBreakpoints[0][0];
+  
+  sortedBreakpoints.forEach(breakpoint => {
+    if(width >= breakpoint[1]) {
+      currentBreakpoint = breakpoint[0];
+    }
+  })
+
+  return currentBreakpoint;
 };
-
-const checkBreakpoints = (breakpoints) => {
-  if(Object.keys(breakpoints).length === 0 || !breakpoints) {
-    return defaultBreakponts;
-  }
-
-  return {
-    ...defaultBreakponts,
-    ...breakpoints
-  };
-}
 
 const useBreakpoints = (
-  breakpointsSettings = defaultBreakponts, 
-  debounceTimeSettings = 250
+  settings = defaultSettings
 ) => {
-  const [width, setWidth] = useState(0);
-
-  const breakpoints = checkBreakpoints(breakpointsSettings);
+  const [width, setWidth] = useState();
 
   const handleResize = () => {
     const newWidth = document.documentElement.clientWidth;
     setWidth(newWidth);
   };
 
-  const handleResizeDebounce = debounce(handleResize, debounceTimeSettings);
+  const handleResizeDebounce = debounce(handleResize, settings.debounceDelay ? settings.debounceDelay : 250);
 
   useEffect(() => {
     handleResize();
@@ -61,7 +38,7 @@ const useBreakpoints = (
 
   return {
     width,
-    breakpoint: getBreakpoint(width, breakpoints),
+    breakpoint: getBreakpoint(width, settings.breakpoints),
   };
 };
 
