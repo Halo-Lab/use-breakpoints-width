@@ -3,7 +3,7 @@
 A React hook for getting the current breakpoint name and screen width.   
 
 ## Usage 
-Initialize `useBreakpoints` with a configuration object. The return value will be an object with the breakpoint's name (string) and screen width (number). 
+Initialize `use-breakpoints-width` with a configuration object. The return value will be an object with the breakpoint's name (string) and screen width (number). 
 
 ```js
 import useBreakpoints from 'use-breakpoints-width';
@@ -78,7 +78,7 @@ const { breakpoint } = useBreakpoints({
 
 ### Debounce delay time
 
-`useBreakpoints` uses debounce due to optimization purposes. You can change the delay time to meet your requirements. Provide a new value as the `debounceDelay` property value. Number in milliseconds (**default 250ms**)).
+This custom hook uses debounce due to optimization purposes. You can change the delay time to meet your requirements. Provide a new value as the `debounceDelay` property value. Number in milliseconds (**default 250ms**)).
 
 ```js
 ...
