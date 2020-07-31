@@ -42,7 +42,7 @@ export default function App() {
 
 ### Breakpoints
 
-You can configure custom breakpoints by providing an object as the first parameter.
+You can configure custom breakpoints by providing an object as the parameter.
 
 ```js
 const { breakpoint } = useBreakpoints({ 
@@ -55,7 +55,7 @@ const { breakpoint } = useBreakpoints({
 ```
 ### Debounce delay time
 
-`useBreakpoints` uses debounce due to optimization purposes. You can change the delay time to meet your requirements. Provide a new value as the second parameter. Number in milliseconds (default 250ms).
+`useBreakpoints` uses debounce due to optimization purposes. You can change the delay time to meet your requirements. Provide a new value as the `debounceDelay` property value. Number in milliseconds (default 250ms).
 
 ```js
 ...
@@ -68,7 +68,7 @@ const { breakpoint, width } = useBreakpoints({
   debounceDelay: 500
 });
 ```
-The default value for debounce is 250 ms. It's possible to left it undefined so default value will apply.  
+The default delay for debounce is 250 ms. It's possible to left it undefined so default value will apply.  
 ```js
 ...
 const { breakpoint, width } = useBreakpoints({ 
