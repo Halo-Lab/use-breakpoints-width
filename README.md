@@ -1,4 +1,4 @@
-# useBreakpoints
+# use-breakpoints-width
 
 A React hook for getting the current breakpoint name and screen width.   
 
