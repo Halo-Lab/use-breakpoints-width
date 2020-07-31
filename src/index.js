@@ -27,15 +27,9 @@ const useBreakpoints = (
   settings = defaultSettings
 ) => {
   const [width, setWidth] = useState();
-
-  console.log('render')
-
-  const handleResize = () => {
-    const newWidth = document.documentElement.clientWidth;
-    setWidth(newWidth);
-  };
-
-  const handleResizeDebounce = debounce(handleResize, settings.debounceDelay ? settings.debounceDelay : 250);
+  const handleResize = () => setWidth(document.documentElement.clientWidth);
+  const debounceDelay = settings.debounceDelay ? settings.debounceDelay : 250;
+  const handleResizeDebounce = debounce(handleResize, debounceDelay);
 
   useEffect(() => {
     handleResize();
