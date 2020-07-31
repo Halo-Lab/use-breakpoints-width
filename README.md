@@ -78,7 +78,7 @@ const { breakpoint } = useBreakpoints({
 
 ### Debounce delay time
 
-This custom hook uses debounce due to optimization purposes. You can change the delay time to meet your requirements. Provide a new value as the `debounceDelay` property value. Number in milliseconds (**default 250ms**)).
+This custom hook uses debounce due to optimization purposes. You can change the delay time to meet your requirements. Provide a new value as the `debounceDelay` property value. Number in milliseconds (**default 250ms**).
 
 ```js
 ...
