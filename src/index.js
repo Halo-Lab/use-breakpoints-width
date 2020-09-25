@@ -11,16 +11,13 @@ const defaultSettings = {
  }
 
 const getBreakpoint = function(width, breakpoints) {
-  const sortedBreakpoints = Object.entries(breakpoints).sort((a, b) => a[1] - b[1]);
-  let currentBreakpoint = sortedBreakpoints[0][0];
-  
-  sortedBreakpoints.forEach(breakpoint => {
-    if(width >= breakpoint[1]) {
-      currentBreakpoint = breakpoint[0];
-    }
-  })
-
-  return currentBreakpoint;
+  return Object.entries(breakpoints)
+    .reduce((maxMatch, entry) => {
+      const shouldSkip = width < entry[1] || entry[1] < maxMatch[1];
+      return shouldSkip ? maxMatch : entry;
+    }, [])
+    .flat()
+    .shift();
 };
 
 const useBreakpoints = (
