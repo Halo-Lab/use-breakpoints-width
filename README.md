@@ -5,6 +5,16 @@ A React hook for getting the current breakpoint name and screen width.
 ## Usage 
 Initialize `use-breakpoints-width` with a configuration object. The return value will be an object with the breakpoint's name (string) and screen width (number). 
 
+
+# Використання сталих значень ширини за breakpoint-ами
+
+Опис React hook-у який надає ім'я breakpoint-ів та відповідні їм ширини екранів.   
+
+## Застосування
+
+Використовуйте `use-breakpoints-width` як об'єкт в файлі конфігурації. Значення, які будуть повернуті, будуть організовані як структура даних об'єкт з ключами, які містять строкові значення у вигляді імен breakpoint-ів та відповідними цим ключам значеннями, які, відповідно містять числові значення ширин екранів. 
+
+
 ```js
 import useBreakpoints from 'use-breakpoints-width';
 
